@@ -1,0 +1,21 @@
+﻿@page
+@model Db04.Web.Pages.Account.IndexModel
+
+<h1>Account van @Model.Account.Name</h1>
+
+<form method="post"> 
+    <div>
+        <label for="pin">Voer pincode in</label>
+        <input id="pin" name="pin" placeholder="bv. 12345" type="number" />
+    </div>
+    <input type="submit" value="Verzend" />
+</form>
+
+@if (Model.Account.IsPinCorrect)
+{
+    <p class="bg-success">Huidige balans: @Model.Account.Balance</p>
+}
+else
+{
+    <p class="bg-danger">@Model.Account.ErrorMessage</p>
+}

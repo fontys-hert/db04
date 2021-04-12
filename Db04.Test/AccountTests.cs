@@ -94,5 +94,16 @@ namespace Db04.Test
             // act, assert
             Assert.Throws<InvalidOperationException>(() => account.Withdraw(12345, 10M));
         }
+
+        [Fact]
+        public void Gets_the_balance_after_supplying_a_valid_pin()
+        {
+            var account = new Account("Timo");
+            account.AddBalance(12345, 50);
+
+            var balance = account.GetBalance(12345);
+
+            Assert.Equal(50, balance);
+        }
     }
 }

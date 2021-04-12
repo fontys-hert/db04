@@ -43,6 +43,13 @@ namespace Db04.Core
             return GetSuccessMessage();
         }
 
+        public decimal GetBalance(int pin)
+        {
+            if (!IsPinValid(pin)) throw new ArgumentException("PIN is invalid", nameof(pin));
+
+            return _balance;
+        }
+
         // methodes
     }
 }
