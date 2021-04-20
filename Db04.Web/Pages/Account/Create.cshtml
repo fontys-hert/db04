@@ -1,0 +1,22 @@
+﻿@page
+@model Db04.Web.Pages.Account.CreateModel
+@{
+    ViewData["Title"] = "Create new Account";
+}
+
+<h1>Maak een nieuw account</h1>
+
+<form method="post">
+    <div asp-validation-summary="All"></div>
+    <p>
+        <label asp-for="Account.Name"></label>
+        <input asp-for="Account.Name" />
+    </p>
+    <p>
+        <label asp-for="Account.Pin"></label>
+        <input asp-for="Account.Pin" />
+    </p>
+    <p>
+        <input type="submit" value="Open nieuwe rekening 😊!" />
+    </p>
+</form>

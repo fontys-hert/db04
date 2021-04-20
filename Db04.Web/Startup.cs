@@ -1,6 +1,9 @@
+using Db04.Core.Logic;
+using Db04.DataAccess;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,6 +27,13 @@ namespace Db04.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+
+            services.AddTransient<AccountCreateLogic>(); // new CreatePageModel(new AccountCreateLogic(new ApplicationDbContext(...)))
+            services.AddDbContext<ApplicationDbContext>(
+                options =>
+                {
+                    options.UseSqlServer("name=ConnectionStrings:DefaultConnection", b => b.MigrationsAssembly("Db04.DataAccess"));
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

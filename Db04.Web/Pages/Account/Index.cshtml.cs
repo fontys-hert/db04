@@ -10,11 +10,11 @@ namespace Db04.Web.Pages.Account
 {
     public class IndexModel : PageModel
     {
-        private readonly Core.Account _account;
+        private readonly Core.Models.Account _account;
 
         public IndexModel()
         {
-            _account = new Core.Account("Timo");
+            _account = new Core.Models.Account("Timo");
             _account.AddBalance(12345, 50);
         }
 

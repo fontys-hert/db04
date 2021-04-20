@@ -1,30 +1,34 @@
 ﻿using System;
 
-namespace Db04.Core
+namespace Db04.Core.Models
 {
     public class Account
     {
         // fields
         private readonly int _pin;
         private readonly string _incorrectPinMessage = "Incorrect PIN";
-        private decimal _balance = 0M;
 
         // properties
-        public string Name { get; }
-        
+        public long Id { get; private set; }
+        public string Name { get; private set; }
+        public decimal Balance { get; private set; }
+
 
         // constructor
+        private Account() { }
+
         public Account(string name, int pin = 12345)
         {
             Name = name;
             _pin = pin;
+            Balance = 0M;
         }
 
         public string AddBalance(int pin, decimal amount)
         {
             if (!IsPinValid(pin)) return _incorrectPinMessage;
             
-            _balance += amount;
+            Balance += amount;
             return GetSuccessMessage();
         }
 
@@ -33,13 +37,13 @@ namespace Db04.Core
             return pin == _pin;
         }
 
-        private string GetSuccessMessage() => $"Success. {_balance}";
+        private string GetSuccessMessage() => $"Success. {Balance}";
 
         public virtual string Withdraw(int pin, decimal amount)
         {
             if (!IsPinValid(pin)) return _incorrectPinMessage;
 
-            _balance -= amount;
+            Balance -= amount;
             return GetSuccessMessage();
         }
 
@@ -47,7 +51,7 @@ namespace Db04.Core
         {
             if (!IsPinValid(pin)) throw new ArgumentException("PIN is invalid", nameof(pin));
 
-            return _balance;
+            return Balance;
         }
 
         // methodes

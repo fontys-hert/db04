@@ -1,4 +1,5 @@
 ﻿using Db04.Core;
+using Db04.Core.Models;
 using System;
 using Xunit;
 

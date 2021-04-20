@@ -8,6 +8,13 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
+    <nav>
+        <ul>
+            <li><a asp-page="/Index">Thuis</a></li>
+            <li><a asp-page="/Account/Index">Mijn rekening</a></li>
+            <li><a asp-page="/Account/Create">Open een nieuwe rekening</a></li>
+        </ul>
+    </nav>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

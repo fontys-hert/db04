@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Db04.Core
 {
-    public class SavingsAccount : Account // OO principes: inheritance
+    public class SavingsAccount : Models.Account // OO principes: inheritance
     {
         public SavingsAccount(string name, int pin = 12345) 
             : base(name, pin)
